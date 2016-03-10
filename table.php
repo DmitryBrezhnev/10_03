@@ -7,8 +7,34 @@
 	//create connection
 	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_dmibre");
 	
+/*
+		IF THERE IS ?DELETE=ROW_ID in the url
+	*/
+	if(isset($_GET["delete"])){
+		
+		echo "Deleting row with id:".$_GET["delete"];
+		
+		// NOW() = current date-time
+		$stmt = $mysql->prepare("UPDATE Revenue_calculator SET Deleted=NOW() WHERE id = ?");
+		
+		echo $mysql->error;
+		
+		//replace the ?
+		$stmt->bind_param("i", $_GET["delete"]);
+		
+		if($stmt->execute()){
+			echo "deleted successfully";
+		}else{
+			echo $stmt->error;
+		}
+		
+		//closes the statement, so others can use connection
+		$stmt->close();
+		
+	}
+	
 	//SQL sentence
-	$stmt = $mysql->prepare("SELECT id, Product_name, Wholesale_price, Retail_price, Amount_of_sold_items, Taxes, created FROM Revenue_calculator ORDER BY id DESC LIMIT 10");
+	$stmt = $mysql->prepare("SELECT id, Product_name, Wholesale_price, Retail_price, Amount_of_sold_items, Taxes, created FROM Revenue_calculator WHERE deleted IS NULL ORDER BY id DESC LIMIT 10");
 	
 	//if error in sentence
 	echo $mysql->error;
@@ -31,6 +57,7 @@
 			$table_html .= "<th>Amount of sold items</th>";
 			$table_html .= "<th>Taxes</th>";
 			$table_html .= "<th>Created</th>";
+			$table_html .= "<th>Delete ?</th>";
 		$table_html .= "</tr>";
 	
 	// GET RESULT 
@@ -47,6 +74,7 @@
 			$table_html .= "<td>".$Amount_of_sold_items."</td>";
 			$table_html .= "<td>".$Taxes."</td>";
 			$table_html .= "<td>".$created."</td>";
+			$table_html .= "<td><a href='?delete=".$id."'>X</a></td>";
 		$table_html .= "</tr>"; //end row
 	}
 	$table_html .= "</table>";
