@@ -8,30 +8,30 @@
 	//*********************
 	// TO field validation
 	//*********************
-	if(isset($_GET["Product_name"])){ //if there is ?Product_name= in the URL
-		if(empty($_GET["Product_name"])){ //if it is empty
+	if(isset($_GET["product_name"])){ //if there is ?Product_name= in the URL
+		if(empty($_GET["product_name"])){ //if it is empty
 			$everything_was_okay = false; //empty
 			echo "Please enter the Product name! <br>"; // yes it is empty
 		}else{
-			echo "Product name: ".$_GET["Product_name"]."<br>"; //no it is not empty
+			echo "Product name: ".$_GET["product_name"]."<br>"; //no it is not empty
 		}
 	}else{
 		$everything_was_okay = false; // do not exist
 	}
 	//check if there is variable in the URL
-	if(isset($_GET["Wholesale_price"])){
+	if(isset($_GET["wholesale_price"])){
 		
 		//only if there is Wholesale_price in the URL
 		//echo "there is Wholesale price";
 		
 		//if its empty
-		if(empty($_GET["Wholesale_price"])){
+		if(empty($_GET["wholesale_price"])){
 			//it is empty
 			$everything_was_okay = false;
 			echo "Please enter the Wholesale price! <br>";
 		}else{
 			//its not empty
-			echo "Wholesale price: ".$_GET["Wholesale_price"]."<br>";
+			echo "Wholesale price: ".$_GET["wholesale_price"]."<br>";
 		}
 		
 	}else{
@@ -39,19 +39,19 @@
 		$everything_was_okay = false;
 	}
 		
-		if(isset($_GET["Retail_price"])){
+		if(isset($_GET["retail_price"])){
 		
 		//only if there is Retail_price in the URL
 		//echo "there is Retail_price";
 		
 		//if its empty
-		if(empty($_GET["Retail_price"])){
+		if(empty($_GET["retail_price"])){
 			//it is empty
 			$everything_was_okay = false;
 			echo "Please enter the Retail price! <br>";
 		}else{
 			//its not empty
-			echo "Retail price: ".$_GET["Retail_price"]."<br>";
+			echo "Retail price: ".$_GET["retail_price"]."<br>";
 		}
 		
 	}else{
@@ -61,19 +61,19 @@
 		
 		
 	    //check if there is variable in the URL
-	    if(isset($_GET["Amount_of_sold_items"])){
+	    if(isset($_GET["amount_of_sold_items"])){
 		
 		//only if there is Amount_of_sold_items in the URL
 		//echo "there is Amount of sold items";
 		
 		//if its empty
-		if(empty($_GET["Amount_of_sold_items"])){
+		if(empty($_GET["amount_of_sold_items"])){
 			//it is empty
 			$everything_was_okay = false;
 			echo "Please enter the Amount of sold items! <br>";
 		}else{
 			//its not empty
-			echo "Amount of sold items: ".$_GET["Amount_of_sold_items"]."<br>";
+			echo "Amount of sold items: ".$_GET["amount_of_sold_items"]."<br>";
 		}
 		
 	}else{
@@ -81,19 +81,19 @@
 		$everything_was_okay = false;
 	}
 	
-		if(isset($_GET["Taxes"])){
+		if(isset($_GET["taxes"])){
 		
 		//only if there is Taxes in the URL
 		//echo "there is Taxes";
 		
 		//if its empty
-		if(empty($_GET["Taxes"])){
+		if(empty($_GET["taxes"])){
 			//it is empty
 			$everything_was_okay = false;
 			echo "Please enter the Taxes! <br>";
 		}else{
 			//its not empty
-			echo "Taxes: ".$_GET["Taxes"]."<br>";
+			echo "Taxes: ".$_GET["taxes"]."<br>";
 		}
 		
 	}else{
@@ -133,7 +133,7 @@
 		// d - decimal, float
 		
 		//for each question mark its type with one letter
-		$stmt->bind_param("siiii", $_GET["Product_name"], $_GET["Wholesale_price"], $_GET["Retail_price"], $_GET["Amount_of_sold_items"], $_GET["Taxes"]);
+		$stmt->bind_param("siiii", $_GET["product_name"], $_GET["wholesale_price"], $_GET["retail_price"], $_GET["amount_of_sold_items"], $_GET["taxes"]);
 		
 		//save
 		if($stmt->execute()){
@@ -211,7 +211,7 @@
 		 <div class="row">
 		 <div class="col-md-3 col-sm-6">
 			 <div class="form-group">
-			    <label for="retail_price"> Retail price: </label>
+			    <label for="retail_price">     Retail price: </label>
 				<input name="retail_price" id="retail_price" type="text" class="form_control">
                 </div> 			 
 			</div>
@@ -238,8 +238,8 @@
 		 
 		 
 		 <div class="row">
-             <input class="btn btn_primary hidden-xs btn-md " type="submit" value="Save data 1">
-			 <input class="btn btn_primary btn-md btn-block visible-xs-block " type="submit" value="Save data 2">
+             <input class="btn btn_success hidden-xs btn-md " type="submit" value="Save data 1">
+			 <input class="btn btn_success btn-md btn-block visible-xs-block " type="submit" value="Save data 2">
 		 </div>
 		
 		</form>
