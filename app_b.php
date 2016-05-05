@@ -133,7 +133,7 @@
 		// d - decimal, float
 		
 		//for each question mark its type with one letter
-		$stmt->bind_param("siiii", $_GET["product_name"], $_GET["wholesale_price"], $_GET["retail_price"], $_GET["amount_of_sold_items"], $_GET["taxes"]);
+		$stmt->bind_param("sddii", $_GET["product_name"], $_GET["wholesale_price"], $_GET["retail_price"], $_GET["amount_of_sold_items"], $_GET["taxes"]);
 		
 		//save
 		if($stmt->execute()){
@@ -190,58 +190,58 @@
 		<h1> This is the app page </h1>
 
         <form>    
-		 <div class="row">
-            <div class="col-md-3 col-sm-6">
-			 <div class="form-group">
-			    <label for="product_name"> Product name: </label>
-				<input name="product_name" id="product_name" type="text" class="form_control">
-                </div> 			 
-			</div>
-		</div class="row">
 		
-		<div class="row">
-         <div class="col-md-3 col-sm-6">
-			 <div class="form-group">
-			    <label for="wholesale_price"> Wholesale price: </label>
-				<input name="wholesale_price" id="wholesale_price" type="text" class="form_control">
-                </div> 			 
+			 <div class="row">
+				<div class="col-md-3 col-sm-6">
+				 <div class="form-group">
+					<label for="product_name"> Product name: </label><br>
+					<input name="product_name" id="product_name" type="text" class="form_control">
+					</div> 			 
+				</div>
 			</div>
-		</div class="row">
-		 
-		 <div class="row">
-		 <div class="col-md-3 col-sm-6">
-			 <div class="form-group">
-			    <label for="retail_price">     Retail price: </label>
-				<input name="retail_price" id="retail_price" type="text" class="form_control">
-                </div> 			 
-			</div>
-		</div class="row">	
+				
 		
-		 <div class="row">
-		 <div class="col-md-3 col-sm-6">
-			 <div class="form-group">
-			    <label for="amount_of_sold_items"> Amount of sold items: </label>
-				<input name="amount_of_sold_items" id="amount_of_sold_items" type="text" class="form_control">
-                </div> 			 
+			<div class="row">
+				 <div class="col-md-3 col-sm-6">
+					 <div class="form-group">
+						<label for="wholesale_price"> Wholesale price: </label><br>
+						<input name="wholesale_price" id="wholesale_price" type="text" class="form_control">
+					</div> 			 
+				</div>
 			</div>
-		</div class="row">
-		
-		<div class="row">
-		 <div class="col-md-3 col-sm-6">
-			 <div class="form-group">
-			    <label for="taxes"> Taxes: </label>
-				<input name="taxes" id="taxes" type="text" class="form_control">
-                </div> 			 
+			 
+			 <div class="row">
+				 <div class="col-md-3 col-sm-6">
+					 <div class="form-group">
+						<label for="retail_price">  Retail price: </label><br>
+						<input name="retail_price" id="retail_price" type="text" class="form_control">
+					</div> 			 
+				</div>
 			</div>
-		</div class="row">
-         
-		 
-		 
-		 <div class="row">
-             <input class="btn btn_success hidden-xs btn-md " type="submit" value="Save data 1">
-			 <input class="btn btn_success btn-md btn-block visible-xs-block " type="submit" value="Save data 2">
-		 </div>
-		
+			
+			 <div class="row">
+				 <div class="col-md-3 col-sm-6">
+					 <div class="form-group">
+						<label for="amount_of_sold_items"> Amount of sold items: </label><br>
+						<input name="amount_of_sold_items" id="amount_of_sold_items" type="text" class="form_control">
+					</div> 			 
+				</div>
+			</div>
+			
+			<div class="row">
+				 <div class="col-md-3 col-sm-6">
+					 <div class="form-group">
+						<label for="taxes"> Taxes: </label><br>
+						<input name="taxes" id="taxes" type="text" class="form_control">
+					</div> 			 
+				</div>
+			</div>
+			 
+			 <div class="row">
+				 <input class="btn btn_success hidden-xs btn-md " type="submit" value="Save data">
+				 <input class="btn btn_success btn-md btn-block visible-xs-block " type="submit" value="Save data">
+			 </div>
+			
 		</form>
   
   
