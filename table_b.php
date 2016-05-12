@@ -66,9 +66,12 @@
 	//we have multiple rows
 	
 	$sum = 0;
+	$hundred = 100;
+	
 	while($stmt->fetch()){
 		
 		$sum = $sum + $Wholesale_price;
+		$revenue = ($Retail_price - $Wholesale_price) * $Amount_of_sold_items * ($hundred - $Taxes) / $hundred;
 		
 		//DO SOMETHING FOR EACH ROW
 		//echo $id." ".$message."<br>";
@@ -79,7 +82,7 @@
 			$table_html .= "<td>".$Retail_price."</td>";
 			$table_html .= "<td>".$Amount_of_sold_items."</td>";
 			$table_html .= "<td>".$Taxes."</td>";
-			$table_html .= "<td>".($Retail_price-$Wholesale_price)*$Amount_of_sold_items."</td>";
+			$table_html .= "<td>".$revenue."</td>";
 			$table_html .= "<td>".$created."</td>";
 			$table_html .= "<td><a class='btn btn-danger' href='?delete=".$id."'>Delete</a></td>";
 		$table_html .= "</tr>"; //end row
