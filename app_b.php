@@ -1,9 +1,47 @@
 <?php require_once("header.php"); ?>
 
 <?php
+	//we need functions for dealing with session
+	require_once("functions_b.php");
+	
+	
+	//RESTRICTION - LOGGED IN
+	if(!isset($_SESSION["user_id"])){
+		//redirect not logged in user to login page
+		header("Location: login_b.php");
+	}
+	
+	
+	//?logout is in the URL
+	if(isset($_GET["logout"])){
+		//delete the session
+		session_destroy();
+		
+		header("Location: login_b.php");
+	}
+	
+	//someone clicked the button "add"
+	if(isset($_GET["add_new_interest"])){
+		
+		if(!empty($_GET["new_interest"])){
+			
+			saveInterest($_GET["new_interest"]);
+			
+		}else{
+			echo "you left the interest field empty";
+		}
+		
+	}
+	
+?>
+
+<h2> Welcome to revenue applicatiuon <?php echo $_SESSION["name"];?> </h2>
+
+
+<?php
 	// require another php file
 	// ../../../ => 3 folders back
-	require_once("config.php");
+    require_once("config.php");
 	$everything_was_okay = true;
 	//*********************
 	// TO field validation
@@ -249,3 +287,6 @@
   
   </body>
 </html>
+
+<tr>
+<a href="?logout=1" >Log out</a>
