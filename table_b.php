@@ -135,7 +135,7 @@
 		
          <?php echo $table_html; ?>
 
-		 <?php echo "Total: ".$sum; ?>
+		 <?php echo "Total revenue: ".$sum; ?>
   
 	</div>
 

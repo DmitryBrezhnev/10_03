@@ -288,5 +288,4 @@
   </body>
 </html>
 
-<tr>
 <a href="?logout=1" >Log out</a>
